@@ -2,7 +2,7 @@
 xp_arcade and Magic mirror and Photobooth
 
 
-Python Script to control the 5 GPIO Buttons
+#Python Script to control the 5 GPIO Buttons
       (GPIO Buttons Mapped) to Magic Mirror Functions)
       
       L   S   R
@@ -13,12 +13,12 @@ Python Script to control the 5 GPIO Buttons
    S - Select (Enter)
    U - Up 
    D - Down 
-Button Combos mapped to scripts on the Host OS. 
-
-L + R     = Magic Mirror mode on
-U + D     = Retro Pie
-L + U     = Photobooth
-S + U + D = X Windows + Terminal console 
-S         = Screenshot / Take a picture if in Photobooth
+   
+#Button Combos mapped to scripts on the Host OS. 
+      L + R     = Magic Mirror mode on
+      U + D     = Retro Pie
+      L + U     = Photobooth
+      S + U + D = X Windows + Terminal console 
+      S         = Screenshot / Take a picture if in Photobooth
 
          
