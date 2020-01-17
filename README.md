@@ -1,13 +1,13 @@
-# xp_arcade
+# xp_mirror
 xp_arcade and Magic mirror and Photobooth
 
-#Setup Magic Mirror 
+#Setup Magic Mirror:  
       https://github.com/sdetweil/MagicMirror_scripts
 
-#Setup Retro Pi
+#Setup Retro Pi:
       https://github.com/RetroPie/RetroPie-Setup/blob/master/README.md
 
-#Setup Photobooth
+#Setup Photobooth:
       
 
 
