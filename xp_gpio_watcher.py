@@ -27,10 +27,14 @@ player = False
 last_state1 = True
 last_state2 = True
 last_state3 = True
+last_state4 = True
+last_state5 = True
 
 input_state1 = True
 input_state2 = True
 input_state3 = True
+input_state4 = True
+input_state5 = True
 
 eind = True
 
@@ -72,18 +76,53 @@ while True:
 
 
 #   If GPIO(22) is shorted to ground
+    if input_state2 != last_state2:
+        if (player and not input_state2):
+#            os.system('sudo killall omxplayer.bin')
+#            omxc = Popen(['omxplayer', '-b','--win', '0 0 800 480', stream4])
+            player = False 
+        elif not input_state2:
+#            omxc = Popen(['omxplayer', '-b','--win', '0 0 800 480', stream4])
+            time.sleep(0.8)
+            last_state2 = True
+            os.system('echo "button2"')
+            player = True
+
+#   If GPIO(22) is shorted to ground
     if input_state3 != last_state3:
         if (player and not input_state3):
 #            os.system('sudo killall omxplayer.bin')
 #            omxc = Popen(['omxplayer', '-b','--win', '0 0 800 480', stream4])
-            player = True
+            player = False
         elif not input_state3:
-#            omxc = Popen(['omxplayer', '-b','--win', '0 0 800 480', stream4])
-#            time.sleep(0.8)
-#            os.system('sudo echo 0 > /sys/class/backlight/rpi_backlight/bl_power')
+            time.sleep(0.8)
+            last_state3 = True
+            os.system('echo "button3"')
             player = True
 
+#   If GPIO(22) is shorted to ground
+    if input_state4 != last_state4:
+        if (player and not input_state4):
+#            os.system('sudo killall omxplayer.bin')
+#            omxc = Popen(['omxplayer', '-b','--win', '0 0 800 480', stream4])
+            player = False
+        elif not input_state4:
+            time.sleep(0.8)
+            last_state4 = True
+            os.system('echo "button4"')
+            player = True
 
+    #   If GPIO(22) is shorted to ground
+    if input_state5 != last_state5:
+        if (player and not input_state5):
+#            os.system('sudo killall omxplayer.bin')
+#            omxc = Popen(['omxplayer', '-b','--win', '0 0 800 480', stream4])
+            player = False
+        elif not input_state5:
+            time.sleep(0.8)
+            last_state5 = True
+            os.system('echo "button5"')
+            player = True
     #If omxplayer is running and GPIO(4) are NOT shorted to ground (end view)
  #   elif (player and input_state1 and input_state3):
  #       time.sleep(60)
