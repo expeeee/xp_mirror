@@ -18,16 +18,11 @@ xp_arcade and Magic mirror and Photobooth
       L   S   R
         U   D
         
-   L - Left 
-   
-   R - Right
-   
-   S - Select (Enter)
-   
-   U - Up 
-   
-   D - Down 
-   
+   L - Left    
+   R - Right    
+   S - Select (Enter)    
+   U - Up    
+   D - Down    
    
 #Button Combos mapped to scripts on the Host OS. 
       L + R     = Magic Mirror mode on
