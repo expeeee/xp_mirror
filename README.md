@@ -35,5 +35,6 @@ xp_arcade and Magic mirror and Photobooth
       
       S         = Screenshot / Take a picture if in Photobooth
       
-
+* GPIO Config for Rasberry Pi 
+[img https://www.raspberrypi-spy.co.uk/wp-content/uploads/2014/07/Raspberry-Pi-GPIO-Layout-Model-B-Plus-rotated.png]
  
