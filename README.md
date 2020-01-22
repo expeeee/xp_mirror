@@ -37,4 +37,5 @@ xp_arcade and Magic mirror and Photobooth
       
 * GPIO Config for Rasberry Pi 
 ![Raspberry-Pi-GPIO-Layout-Model-B-Plus-rotated](https://user-images.githubusercontent.com/5242275/72920603-40409700-3d0f-11ea-9dfe-ce47f91459b7.png)
-]
+
+# GPIO 4, 17, 22, 23, 24
