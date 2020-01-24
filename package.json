@@ -1,0 +1,22 @@
+{
+  "name": "ourcodeworldelectron-webcamera",
+  "version": "1.0.0",
+  "description": "Example webcamera with electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "author": "Our Code World",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^3.0.13"
+  },
+  "dependencies": {
+    "dialog": "^0.3.1",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "remote": "^0.2.6",
+    "sonus": "^1.0.3",
+    "webcamjs": "^1.0.6"
+  }
+}

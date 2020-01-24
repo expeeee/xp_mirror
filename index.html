@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<style>
+	.grid-container {
+	  display: grid;
+	  grid-template-columns: auto auto auto;
+	  background-color: #2196F3;
+	  padding: 10px;
+	}
+	.grid-item {
+	  background-color: rgba(255, 255, 255, 0.8);
+	  border: 1px solid rgba(0, 0, 0, 0.8);
+	  padding: 20px;
+	  font-size: 30px;
+	  text-align: center;
+	}
+	.selected { 
+		border-color : red; 
+		
+	}
+	body { font-family: Helvetica, sans-serif; }
+	h2, h3 { margin-top:0; }
+	form { margin-top: 15px; }
+	form > input { margin-right: 15px; }
+	#results { float:right; margin:20px; padding:20px; border:1px solid; background:#ccc; }
+</style>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!--script src="js/jquery.min.js"></script-->
+  <script>window.$ = window.jQuery = require('jquery');</script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/webcam.min.js"></script>
+    
+  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Our Code World Camera Demo</title>
+  </head>
+  <body>
+
+		<div class="jumbotron text-center">
+		  <h1>XP Mirror</h1>
+		  <!--p>Resize this responsive page to see the effect!</p--> 
+		  <div id="camdemo" style="width: 320px; height: 240px; text-align: center; margin: 0 auto;"></div>
+		  <br>
+		  <button id="EnableWebCam" class="btn btn-primary"> Start Camera</button>
+		  <button id="TakePicture" class="btn btn-primary"> Take Snapshot </button>
+		<p>A Grid Layout must have a parent element with the <em>display</em> property set to <em>grid</em> or <em>inline-grid</em>.</p>
+
+		<p>Direct child element(s) of the grid container automatically becomes grid items.</p>
+		</div>
+		
+
+		<div class="grid-container">
+		  <div class="grid-item"><button id="box1" boxNum=1 class="btn btn-primary btn-lg"> Start Magic Mirror</button></div>
+		  <div class="grid-item"><button id="box2" boxNum=2 class="btn btn-primary btn-lg"> EmulationStation</button></div>
+		  <div class="grid-item"><button id="box3" boxNum=3 class="btn btn-primary btn-lg"> Photo Booth</button></div>  
+		  <div class="grid-item"><button id="box4" boxNum=4 class="btn btn-primary btn-lg"> Box 4</button></div>
+		  <div class="grid-item"><button id="box5" boxNum=5 class="btn btn-primary btn-lg btn-outline-danger"> Home</button></div>
+		  <div class="grid-item"><button id="box6" boxNum=6 class="btn btn-primary btn-lg"> Edit Pictures</button ></div>  
+		  <div class="grid-item"><button id="box7" boxNum=7 class="btn btn-primary btn-lg"> Box 7</button></div>
+		  <div class="grid-item"><button id="box8" boxNum=8 class="btn btn-primary btn-lg"> Box 8</button></div>
+		  <div class="grid-item"><button id="box9" boxNum=9 class="btn btn-primary btn-lg"> Settings</button ></div>  
+		</div>
+		  
+  
+  
+		<script>
+
+		var enabled = false;
+		// Use require to add webcamjs
+		var WebCamera = require("webcamjs");
+		//var remote = require('remote'); // Load remote component that contains the dialog dependency
+		//var dialog = remote.require('dialog'); // Load the dialogs component of the OS
+		var fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
+
+					const videoElement = document.getElementById('video');
+			$(document).ready(function() {
+				$(document).keydown(function (event ){
+					key = event.keyCode;
+					switch (key) {
+						case 38: 
+							moveSelected("Up");
+		//					alert ("Up")
+						break;
+						case 40: 
+						moveSelected("Down");
+		//					alert ("Down")
+						break;
+						
+						case 37: 
+						moveSelected("Left");
+		//					alert ("Left")
+						break;
+						
+						case 39: 
+							moveSelected("Right");
+		//					alert ("Right")
+						break;
+						
+						case 13: 
+						// on event event get the current selected Box 
+
+							alert ("Enter")
+						break;
+						
+						default:  
+							alert (key)
+					}
+					
+				});
+
+				function moveSelected(direction){
+					var Change = 0; 
+					Num = $(".btn-outline-danger").attr("boxNum");
+					$(".btn-outline-danger").removeClass('btn-outline-danger');
+					switch (direction) { 
+						case "Up": 
+							Change = -3; 
+						break; 
+						case "Down": 
+							Change = 3;
+						break; 
+						case "Left": 
+							Change = -1;
+						break; 
+						case "Right": 
+							Change = 1;
+						break; 
+						case "Up": 
+						break; 
+					}
+
+					Num = parseFloat(Num) + parseFloat(Change);
+					console.log(Num);
+					if (Num > 9) 
+						Num = 1;
+					if (Num < 1)
+						Num = 9;
+					$('#box'+Num).addClass("btn-outline-danger");
+
+				}
+
+
+				$('#EnableWebCam').click( function (){
+					if(!enabled){ // Start the camera !
+						enabled = true;
+						WebCamera.attach('#camdemo');
+						console.log("The camera has been started");
+					}else{ // Disable the camera !
+						enabled = false;
+						WebCamera.reset();
+						console.log("The camera has been disabled");
+					}
+				});
+
+				$('#TakePicture').click (function (){
+					if(enabled){
+						WebCamera.snap(function(data_uri) {
+							// Save the image in a variable
+							var imageBuffer = processBase64Image(data_uri);
+							// Start the save dialog to give a name to the file
+						//	dialog.showSaveDialog({
+						//		filters: [
+						//			{ name: 'Images', extensions: ['png'] },
+						//		]
+						//	},function (fileName) {
+							//	if (fileName === undefined){
+							//			console.log("You didn't save the file because you exit or didn't give a name");
+							//			return;
+							//	}
+						var	fileName = "myPicture.png";
+								// If the user gave a name to the file, then save it
+								// using filesystem writeFile function
+								fs.writeFile(fileName, imageBuffer.data, function(err) {
+									if(err){
+										console.log("Cannot save the file :'( time to cry !");
+									}else{
+										alert("Image saved succesfully");
+									}
+								});
+							
+						});
+				}else{
+						console.log("Please enable the camera first to take the snapshot !");
+				}
+				});
+
+			});
+
+			// return an object with the processed base64image
+			function processBase64Image(dataString) {
+				var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),response = {};
+
+				if (matches.length !== 3) {
+					return new Error('Invalid input string');
+				}
+
+				response.type = matches[1];
+				response.data = new Buffer(matches[2], 'base64');
+
+				return response;
+			}
+
+			
+        </script>
+  </body>
+</html>
