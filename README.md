@@ -18,11 +18,11 @@ xp_arcade and Magic mirror and Photobooth
       L   S   R
         U   D
         
-   L - Left    
-   R - Right    
-   S - Select (Enter)    
-   U - Up    
-   D - Down    
+   L - Left    23
+   R - Right   22 
+   S - Select (Enter)    27
+   U - Up      18  
+   D - Down    17
    
 #Button Combos mapped to scripts on the Host OS. 
       L + R     = Magic Mirror mode on
@@ -38,4 +38,4 @@ xp_arcade and Magic mirror and Photobooth
 * GPIO Config for Rasberry Pi 
 ![Raspberry-Pi-GPIO-Layout-Model-B-Plus-rotated](https://user-images.githubusercontent.com/5242275/72920603-40409700-3d0f-11ea-9dfe-ce47f91459b7.png)
 
-# GPIO 4, 17, 22, 23, 24
+# GPIO 17, 27, 22, 23, 18
