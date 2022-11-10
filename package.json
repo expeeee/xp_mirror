@@ -9,7 +9,7 @@
   "author": "Our Code World",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^3.0.13"
+    "electron": "^18.3.7"
   },
   "dependencies": {
     "dialog": "^0.3.1",
